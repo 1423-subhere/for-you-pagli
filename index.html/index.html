@@ -137,16 +137,22 @@
 
         /* Success Page Image */
         .couple-img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            margin: 20px 0;
+           width: 100%; /* Spans the width of the card */
+           max-width: 300px; /* Limits size so it's not overwhelming */
+           height: auto; /* Keeps the original shape of your photo */
+           border-radius: 15px; /* Soft rounded corners instead of a circle */
+           border: 3px solid white;
+           box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+           margin: 20px 0;
+           display: block;
+           margin-left: auto;
+           margin-right: auto;
         }
 
-        #successPage { display: none; }
+        #successPage {
+            display: none;
+            max-width: 400px;
+        }
     </style>
 </head>
 <body>
@@ -173,7 +179,11 @@
 
     <div class="card" id="successPage">
         <h1>Happy Valentine's Day!</h1>
-        <img src="us.jpeg" alt="Rai & Me" class="couple-img"> <p style="font-size: 1.1rem; color: #555;">Every day with you feels like a gift I wasn't expecting. You’ve turned the ordinary moments of my life into something extraordinary just by being in them. Thank you for being my person, my best friend, and my greatest adventure. I love you more than words can capture, <b>Rai</b>. ❤️</p>
+        <img src="us.jpeg" alt="Rai & Me" class="couple-img">
+        <div style="padding: 10px;">    
+            <p style="font-weight: 600; color: #ff4d6d; font-size: 1.2rem; margin: 5px 0;">I love you, Rai! ❤️</p>
+            <p style="font-size: 0.9rem; color: #777;">Every day with you feels like a gift I wasn't expecting. You’ve turned the ordinary moments of my life into something extraordinary just by being in them. Thank you for being my person, my best friend, and my greatest adventure. I love you more than words can capture, <b>Rai</b>. ❤️</p>
+        </div>
     </div>
 
     <script>
@@ -217,4 +227,5 @@
         }
     </script>
 </body>
+
 </html>
