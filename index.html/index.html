@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Rai ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff4d6d;
+            --secondary: #ff85a1;
+            --glass: rgba(255, 255, 255, 0.85);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            /* Animated Gradient Background */
+            background: linear-gradient(-45deg, #ffc0cb, #ff85a1, #f8ad9d, #fff0f3);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* The Glass Card */
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 24px;
+            padding: 40px 30px;
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--primary);
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+
+        .intro-text {
+            font-weight: 300;
+            color: #555;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .shayari {
+            background: rgba(255, 77, 109, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            font-style: italic;
+            line-height: 1.8;
+            color: #444;
+            font-size: 1.05rem;
+            margin: 20px 0;
+            border-left: 4px solid var(--primary);
+        }
+
+        .question {
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: #333;
+            margin: 25px 0;
+        }
+
+        /* Buttons Styling */
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            height: 60px;
+            align-items: center;
+            position: relative;
+        }
+
+        .btn {
+            padding: 12px 35px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.2);
+        }
+
+        #yesBtn {
+            background: var(--primary);
+            color: white;
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.1);
+            background: #ff0a37;
+        }
+
+        #noBtn {
+            background: white;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        /* Floating Hearts & Sparkles */
+        .floating {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            user-select: none;
+            animation: floatUp linear forwards;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Success Page Image */
+        .couple-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+
+        #successPage { display: none; }
+    </style>
+</head>
+<body>
+
+    <div id="bg-layer"></div>
+
+    <div class="card" id="mainCard">
+        <p class="intro-text">On this special Valentine's Day, I have a secret...</p>
+        
+        <div class="shayari">
+            Hazaaron phool kam hain ek gulistaan ke liye,<br>
+            Magar tera ek muskurana kaafi hai meri jaan ke liye.<br>
+            Is Valentine’s Day par bas itni si guzaarish hai...<br>
+            Kya tum banna chahogi meri poori dastaan ke liye?
+        </div>
+
+        <p class="question">Rai.. Will you be my Valentine?</p>
+
+        <div class="btn-group">
+            <button class="btn" id="yesBtn" onclick="celebrate()">Yes</button>
+            <button class="btn" id="noBtn" onmouseover="moveButton()">No</button>
+        </div>
+    </div>
+
+    <div class="card" id="successPage">
+        <h1>Happy Valentine's Day!</h1>
+        <img src="us.jpeg" alt="Rai & Me" class="couple-img"> <p style="font-size: 1.1rem; color: #555;">Every day with you feels like a gift I wasn't expecting. You’ve turned the ordinary moments of my life into something extraordinary just by being in them. Thank you for being my person, my best friend, and my greatest adventure. I love you more than words can capture, <b>Rai</b>. ❤️</p>
+    </div>
+
+    <script>
+        // Professional Floating Animation
+        function spawnHeart() {
+            const elements = ['❤️', '💖', '✨', '🌸'];
+            const el = document.createElement('div');
+            el.className = 'floating';
+            el.innerHTML = elements[Math.floor(Math.random() * elements.length)];
+            el.style.left = Math.random() * 100 + 'vw';
+            el.style.fontSize = Math.random() * 20 + 15 + 'px';
+            el.style.animationDuration = Math.random() * 3 + 4 + 's';
+            el.style.opacity = Math.random();
+            
+            document.getElementById('bg-layer').appendChild(el);
+            setTimeout(() => el.remove(), 7000);
+        }
+        setInterval(spawnHeart, 400);
+
+        // Pro-Smooth Escape Logic
+        function moveButton() {
+            const btn = document.getElementById('noBtn');
+            const padding = 50;
+            const x = Math.random() * (window.innerWidth - btn.clientWidth - padding);
+            const y = Math.random() * (window.innerHeight - btn.clientHeight - padding);
+            
+            btn.style.position = 'fixed';
+            btn.style.transition = 'all 0.2s ease';
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+
+        function celebrate() {
+            document.getElementById('mainCard').style.display = 'none';
+            document.getElementById('successPage').style.display = 'block';
+            
+            // Celebration Burst
+            for(let i=0; i<50; i++) {
+                setTimeout(spawnHeart, i * 50);
+            }
+        }
+    </script>
+</body>
+</html>
