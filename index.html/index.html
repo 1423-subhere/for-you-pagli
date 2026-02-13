@@ -114,9 +114,9 @@
         }
 
         #noBtn {
-            background: white;
-            color: var(--primary);
-            border: 1px solid var(--primary);
+            touch-action: none; /* Prevents the phone from "holding" the button */
+            user-select: none;  /* Prevents her from "selecting" the button text */
+            pointer-events: auto;
         }
 
         /* Floating Hearts & Sparkles */
@@ -160,12 +160,12 @@
     <div id="bg-layer"></div>
 
     <div class="card" id="mainCard">
-        <p class="intro-text">On this special Valentine's Day, I have a secret...</p>
+        <p class="intro-text">On this special Day, I have a secret...</p>
         
         <div class="shayari">
             Hazaaron phool kam hain ek gulistaan ke liye,<br>
             Magar tera ek muskurana kaafi hai meri jaan ke liye.<br>
-            Is Valentine’s Day par bas itni si guzaarish hai...<br>
+            Aj mera bas itni si guzaarish hai...<br>
             Kya tum banna chahogi meri poori dastaan ke liye?
         </div>
 
@@ -206,14 +206,20 @@
         // Pro-Smooth Escape Logic
         function moveButton() {
             const btn = document.getElementById('noBtn');
-            const padding = 50;
-            const x = Math.random() * (window.innerWidth - btn.clientWidth - padding);
-            const y = Math.random() * (window.innerHeight - btn.clientHeight - padding);
-            
+            const padding = 20;
+            const maxX = window.innerWidth - btn.offsetWidth - padding;
+            const maxY = window.innerHeight - btn.offsetHeight - padding;
+    
+    // Generate new random coordinates
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+    
+    // Force it to be 'fixed' so it moves relative to the phone screen, not the card
             btn.style.position = 'fixed';
-            btn.style.transition = 'all 0.2s ease';
-            btn.style.left = x + 'px';
-            btn.style.top = y + 'px';
+            btn.style.zIndex = '999'; // Ensure it stays on top of everything
+            btn.style.transition = 'all 0.1s ease'; // Fast jump
+            btn.style.left = randomX + 'px';
+            btn.style.top = randomY + 'px';
         }
 
         function celebrate() {
@@ -229,3 +235,4 @@
 </body>
 
 </html>
+
